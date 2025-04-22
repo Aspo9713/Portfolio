@@ -1,8 +1,11 @@
+// components/navbar.tsx
 "use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
   NavbarLogo,
   NavbarButton,
@@ -10,22 +13,12 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
 
 export function NavbarDemo() {
   const navItems = [
-    {
-      name: "Hlavní Stránka",
-      link: "#hlavni stranka",
-    },
-    {
-      name: "Práce",
-      link: "#prace",
-    },
-    {
-      name: "O Mně",
-      link: "#o mne",
-    },
+    { name: "Hlavní Stránka", link: "/" },
+    { name: "Práce",         link: "/prace" },
+    { name: "O Mně",         link: "/o-mne" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,17 +26,33 @@ export function NavbarDemo() {
   return (
     <div className="relative w-full">
       <Navbar>
-        {/* Desktop Navigation */}
+        {/* Desktop */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems} />
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.link}
+                href={item.link}
+                className="text-neutral-600 hover:text-neutral-900 transition"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
           <div className="flex items-center gap-4">
-            
-            <NavbarButton variant="primary">Kontakt</NavbarButton>
+            {/* Tlačítko Kontakt jako Next.js Link */}
+            <NavbarButton
+              as={Link}
+              href="/contact"
+              variant="primary"
+            >
+              Kontakt
+            </NavbarButton>
           </div>
         </NavBody>
 
-        {/* Mobile Navigation */}
+        {/* Mobile */}
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
@@ -57,33 +66,30 @@ export function NavbarDemo() {
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
-              >
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
-            <div className="flex w-full flex-col gap-4">
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.link}
+                  href={item.link}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-neutral-600 dark:text-neutral-300"
+                >
+                  {item.name}
+                </Link>
+              ))}
               <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
+                as={Link}
+                href="/contact"
                 variant="primary"
                 className="w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-              
                 Kontakt
               </NavbarButton>
             </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-      
-
-      {/* Navbar */}
     </div>
   );
 }
-
