@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 const LandingPage: React.FC = () => {
   return (
@@ -14,26 +15,30 @@ const LandingPage: React.FC = () => {
       </p>
 
       <div className="flex space-x-4 mb-8">
-        <button className="bg-gray-600 hover:bg-gray-700 transition-colors text-white font-semibold py-2 px-4 rounded-full">
-          Zobrazit portfolio
-        </button>
-        <button className="border border-white hover:bg-white hover:text-gray-700 transition-colors text-white font-semibold py-2 px-4 rounded-full">
-          Kontaktovat
-        </button>
+        <Link href="/prace">
+          <button className="bg-gray-600 hover:bg-gray-700 transition-colors text-white font-semibold py-2 px-4 rounded-full">
+            Zobrazit portfolio
+          </button>
+        </Link>
+        <Link href="/kontakt">
+          <button className="border border-white hover:bg-white hover:text-gray-700 transition-colors text-white font-semibold py-2 px-4 rounded-full">
+            Kontaktovat
+          </button>
+        </Link>
       </div>
 
       {/* Statistiky – pod sebou na mobilu, vedle sebe na desktopu */}
       <div className="flex flex-col md:flex-row justify-center items-center md:space-x-32 space-y-8 md:space-y-0 mt-7 md:mt-32">
-      <div className="flex flex-col items-center">
-          <span className="text-4xl font-bold">12</span>
+        <div className="flex flex-col items-center">
+          <span className="text-4xl font-bold text-gray-900">12</span>
           <span className="text-sm text-white">Let zkušeností</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-4xl font-bold">21</span>
+          <span className="text-4xl font-bold text-gray-900">21</span>
           <span className="text-sm text-white">Dokončených projektů</span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-4xl font-bold">1000+</span>
+          <span className="text-4xl font-bold text-gray-900">1000+</span>
           <span className="text-sm text-white">Dodaných návrhů</span>
         </div>
       </div>

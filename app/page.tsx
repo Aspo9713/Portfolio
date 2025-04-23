@@ -14,8 +14,8 @@ const LandingPage: React.FC = () => {
     <div className="min-h-screen overflow-hidden">
       <NavbarDemo />
       <Landingpage />
-      <CarouselDemo />
       <ServicesGrid/>
+      <CarouselDemo />
       <ServiceHook/>
       <Footer />
       

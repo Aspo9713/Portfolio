@@ -84,3 +84,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+
+/* 1) Definice @font-face – nahraďte názvy souborů dle vašeho umístění */
+@font-face {
+  font-family: "Kelson";
+  src: url("/fonts/KelsonSansRegular.woff2") format("woff2"),
+       url("/fonts/KelsonSansBold.woff2")  format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+/* 2) CSS proměnná pro snadné používání */
+:root {
+  --font-charm: "Kelson", cursive;
+}
+ 
+/* 3) Aplikace na celé tělo dokumentu */
+body {
+  font-family: var(--font-kelson), sans-serif;
+}

@@ -1,4 +1,3 @@
-// components/navbar.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -17,8 +16,8 @@ import {
 export function NavbarDemo() {
   const navItems = [
     { name: "Hlavní Stránka", link: "/" },
-    { name: "Práce",         link: "/prace" },
-    { name: "O Mně",         link: "/o-mne" },
+    { name: "Práce", link: "/prace" },
+    { name: "O Mně", link: "/o-mne" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,9 +25,12 @@ export function NavbarDemo() {
   return (
     <div className="relative w-full">
       <Navbar>
-        {/* Desktop */}
+        {/* Desktop verze */}
         <NavBody>
-          <NavbarLogo />
+          <Link href="/" className="flex items-center space-x-2 group">
+            <NavbarLogo />
+          </Link>
+
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <Link
@@ -40,22 +42,21 @@ export function NavbarDemo() {
               </Link>
             ))}
           </div>
+
           <div className="flex items-center gap-4">
-            {/* Tlačítko Kontakt jako Next.js Link */}
-            <NavbarButton
-              as={Link}
-              href="/contact"
-              variant="primary"
-            >
+            <NavbarButton as={Link} href="/kontakt" variant="primary">
               Kontakt
             </NavbarButton>
           </div>
         </NavBody>
 
-        {/* Mobile */}
+        {/* Mobilní verze */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo />
+            <Link href="/" className="flex items-center space-x-2 group">
+              <NavbarLogo />
+            </Link>
+
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -66,7 +67,7 @@ export function NavbarDemo() {
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 text-center">
               {navItems.map((item) => (
                 <Link
                   key={item.link}
@@ -79,7 +80,7 @@ export function NavbarDemo() {
               ))}
               <NavbarButton
                 as={Link}
-                href="/contact"
+                href="/kontakt"
                 variant="primary"
                 className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}

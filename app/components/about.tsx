@@ -9,7 +9,7 @@ export default function AboutPage() {
       animate={{ opacity: 1, transition: { duration: 0.8 } }}
     >
       <div className="max-w-4xl mx-auto  bg-opacity-80 backdrop-blur-md rounded-2xl p-10">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6 text-center">
+        <h1 className="text-4xl font-bold text-gray-900/80 mb-6 text-center">
           O mně
         </h1>
         <p className="text-white mb-4">
