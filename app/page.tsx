@@ -9,10 +9,13 @@ import { CarouselDemo } from "./components/carousel";
 import ServicesGrid from "./components/sluzby";
 import ServiceHook from "./components/hook";
 
+
+
 const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       <NavbarDemo />
+      
       <Landingpage />
       <ServicesGrid/>
       <CarouselDemo />
