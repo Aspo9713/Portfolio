@@ -60,6 +60,9 @@ export const metadata = {
     '3D vizualizace',
     'art direction',
   ],
+  icons: {
+    icon: "/imgs/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -84,3 +87,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+
